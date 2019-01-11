@@ -85,6 +85,7 @@
     <Compile Include="Gases\Containers\FixedPressureContainer.vb" />
     <Compile Include="Gases\Containers\FixedTemperatureContainer.vb" />
     <Compile Include="Gases\Containers\FixedVolumeContainer.vb" />
+    <Compile Include="Gases\Exception\UnknownValueException.vb" />
     <Compile Include="Gases\Gas.vb" />
     <Compile Include="Gases\Producer.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
