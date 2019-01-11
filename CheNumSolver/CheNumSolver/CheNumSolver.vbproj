@@ -96,6 +96,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Quantities\Pressure.vb" />
+    <Compile Include="Quantities\Temperature.vb" />
     <Compile Include="Quantities\Volume.vb" />
   </ItemGroup>
   <ItemGroup>
