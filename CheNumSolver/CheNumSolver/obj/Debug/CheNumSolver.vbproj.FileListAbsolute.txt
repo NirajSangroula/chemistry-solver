@@ -10,3 +10,15 @@ E:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.vbproj.Core
 E:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.exe
 E:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.xml
 E:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.pdb
+B:\chemistry-solver\CheNumSolver\CheNumSolver\bin\Debug\CheNumSolver.exe.config
+B:\chemistry-solver\CheNumSolver\CheNumSolver\bin\Debug\CheNumSolver.exe
+B:\chemistry-solver\CheNumSolver\CheNumSolver\bin\Debug\CheNumSolver.pdb
+B:\chemistry-solver\CheNumSolver\CheNumSolver\bin\Debug\CheNumSolver.xml
+B:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.vbprojAssemblyReference.cache
+B:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.Form1.resources
+B:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.Resources.resources
+B:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.vbproj.GenerateResource.cache
+B:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.vbproj.CoreCompileInputs.cache
+B:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.exe
+B:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.xml
+B:\chemistry-solver\CheNumSolver\CheNumSolver\obj\Debug\CheNumSolver.pdb

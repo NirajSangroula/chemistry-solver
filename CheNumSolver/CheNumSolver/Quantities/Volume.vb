@@ -1,6 +1,9 @@
 ﻿Public Class Volume
-    Property Litre As Double
-    Property MeterCubed As Double
-    Property CMCubed As Double
+    Private ReadOnly lITRES_PER_METERCUBED = 1000
+    Private ReadOnly CMCUBED_PER_METERCUBED =
+    Private Litre As Double
+    Private MeterCubed As Double
+    Private Sub SetMeterCubedFromLitre(ByVal Litre As Double)
 
+    End Sub
 End Class
