@@ -4,6 +4,7 @@
     Private Pascal As Double
     Private Atm As Double
     Private MMOFMercury As Decimal
+<<<<<<< HEAD
     Public Property PascalValue()
         Get
             If Pascal = Nothing Then
@@ -42,6 +43,38 @@
             Initialize()
         End Set
     End Property
+=======
+
+    Public Sub SetPascal(ByVal Pascal As Double)
+        Me.Pascal = Pascal
+    End Sub
+
+    Public Sub SetAtm(ByVal Atm As Double)
+        Me.Atm = Atm
+    End Sub
+
+    Public Sub SetMMOFMercury(ByVal MMOFMercury)
+        Me.MMOFMercury = MMOFMercury
+    End Sub
+
+    Public Sub GetPascal()
+        If Pascal = Nothing Then
+            Initialize()
+        End If
+    End Sub
+
+    Public Sub GetAtm()
+        If Atm = Nothing Then
+            Initialize()
+        End If
+    End Sub
+
+    Public Sub GetMMOFMercury()
+        If MMOFMercury = Nothing Then
+            Initialize()
+        End If
+    End Sub
+>>>>>>> 0757203e80da861cb75c25124e4272b8ace9fb33
 
     Private Sub Initialize()
         If Pascal Then
@@ -69,6 +102,7 @@
     End Sub
 
     Private Sub SetPascalFromMMOFMercury()
+<<<<<<< HEAD
         PascalValue = PASCAL_PER_MM_OF_MERCURY * MMOFMercury
     End Sub
 
@@ -82,6 +116,21 @@
 
     Private Sub SetMMOFMercuryFromPascal()
         MMOFMercuryValue = Pascal * PASCAL_PER_MM_OF_MERCURY
+=======
+        SetPascal(PASCAL_PER_MM_OF_MERCURY * MMOFMercury)
+    End Sub
+
+    Private Sub SetPascalFromAtm()
+        SetPascal(Atm * PASCAL_PER_ATM)
+    End Sub
+
+    Private Sub SetAtmFromPascal()
+        SetAtm(Pascal / PASCAL_PER_ATM)
+    End Sub
+
+    Private Sub SetMMOFMercuryFromPascal()
+        SetMMOFMercury(Pascal * PASCAL_PER_MM_OF_MERCURY)
+>>>>>>> 0757203e80da861cb75c25124e4272b8ace9fb33
     End Sub
 
     Private Function MeterOfMercury() As Decimal
