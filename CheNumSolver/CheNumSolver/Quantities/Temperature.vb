@@ -45,6 +45,12 @@
 
     Private Sub Initialize()
         If IsNothing(Celsius) = False Then
+            SetKelvinFromCelsius()
+            SetFahrenheitFromKelvin()
+        ElseIf IsNothing(Fahrenheit) = False Then
+            SetKelvinFromFahrenheit()
+            SetCelsiusFromKelvin()
+        Else
 
         End If
     End Sub
@@ -61,7 +67,7 @@
         FahrenheitValue = (KelvinValue - FREEZING_POINT_OF_ICE_IN_KELVIN) * 9 / 5 + 32
     End Sub
 
-    Private Sub SetCelsiusFromFahrenheit()
-        CelsiusValue = FahrenheitValue - FREEZING_POINT_OF_ICE_IN_KELVIN
+    Private Sub SetCelsiusFromKelvin()
+        CelsiusValue = KelvinValue - FREEZING_POINT_OF_ICE_IN_KELVIN
     End Sub
 End Class
