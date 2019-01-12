@@ -81,10 +81,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Gases\Container.vb" />
-    <Compile Include="Gases\Containers\FixedAmountOfSubstanceContainer.vb" />
-    <Compile Include="Gases\Containers\FixedPressureContainer.vb" />
-    <Compile Include="Gases\Containers\FixedTemperatureContainer.vb" />
-    <Compile Include="Gases\Containers\FixedVolumeContainer.vb" />
+    <Compile Include="Gases\SingleGasContainer.vb" />
+    <Compile Include="Gases\SingleGasContainers\FixedAmountOfSubstanceContainer.vb" />
+    <Compile Include="Gases\SingleGasContainers\FixedPressureContainer.vb" />
+    <Compile Include="Gases\SingleGasContainers\FixedTemperatureContainer.vb" />
+    <Compile Include="Gases\SingleGasContainers\FixedVolumeContainer.vb" />
     <Compile Include="Gases\Exception\UnknownValueException.vb" />
     <Compile Include="Gases\Gas.vb" />
     <Compile Include="Gases\Producer.vb" />

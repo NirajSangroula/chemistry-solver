@@ -4,6 +4,16 @@
     Private Litre As Double
     Private MeterCubed As Double
     Private CMCubed As Double
+    Public Function IsSet() As Boolean
+        Try
+            If (IsNothing(MeterCubedValue) = False) Then
+                Return True
+            End If
+            Return False
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
     Property LitreValue
         Get
             If IsNothing(Litre) Then

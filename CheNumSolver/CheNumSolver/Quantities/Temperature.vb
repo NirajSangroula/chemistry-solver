@@ -4,6 +4,16 @@
     Private Celsius As Double
     Private Fahrenheit As Double
 
+    Public Function IsSet() As Boolean
+        Try
+            If (IsNothing(KelvinValue) = False) Then
+                Return True
+            End If
+            Return False
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
     Property KelvinValue
         Get
             If IsNothing(Kelvin) Then

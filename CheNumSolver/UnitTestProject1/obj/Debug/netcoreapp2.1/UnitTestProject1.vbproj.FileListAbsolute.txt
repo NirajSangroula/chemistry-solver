@@ -1,0 +1,14 @@
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\bin\Debug\netcoreapp2.1\UnitTestProject1.deps.json
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\bin\Debug\netcoreapp2.1\UnitTestProject1.runtimeconfig.json
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\bin\Debug\netcoreapp2.1\UnitTestProject1.runtimeconfig.dev.json
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\bin\Debug\netcoreapp2.1\UnitTestProject1.dll
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\bin\Debug\netcoreapp2.1\UnitTestProject1.pdb
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\obj\Debug\netcoreapp2.1\UnitTestProject1.vbprojAssemblyReference.cache
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\obj\Debug\netcoreapp2.1\UnitTestProject1.vbproj.CoreCompileInputs.cache
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\obj\Debug\netcoreapp2.1\UnitTestProject1.AssemblyInfoInputs.cache
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\obj\Debug\netcoreapp2.1\UnitTestProject1.AssemblyInfo.vb
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\obj\Debug\netcoreapp2.1\UnitTestProject1.dll
+B:\chemistry-solver\CheNumSolver\UnitTestProject1\obj\Debug\netcoreapp2.1\UnitTestProject1.pdb

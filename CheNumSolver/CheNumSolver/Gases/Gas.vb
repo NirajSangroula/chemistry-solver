@@ -8,6 +8,7 @@
 
     Property Mass()
         Get
+            SetMass()
             If IsNothing(M) Then
                 Throw New UnknownValueException()
             End If
@@ -32,6 +33,7 @@
 
     Property MolecularWeight()
         Get
+            SetMolecularWeight()
             If IsNothing(MW) Then
                 Throw New UnknownValueException()
             End If
@@ -69,6 +71,7 @@
 
     Property NumberOfMoles()
         Get
+            SetNumberOfMoles()
             If IsNothing(NOM) Then
                 Throw New UnknownValueException()
             End If
@@ -78,4 +81,16 @@
             NOM = value
         End Set
     End Property
+
+    Public Sub SetNumberOfMoles()
+        NumberOfMoles = Mass / MolecularWeight
+    End Sub
+
+    Public Sub SetMass()
+        Mass = NumberOfMoles * MolecularWeight
+    End Sub
+
+    Public Sub SetMolecularWeight()
+        MolecularWeight = Mass / NumberOfMoles
+    End Sub
 End Class

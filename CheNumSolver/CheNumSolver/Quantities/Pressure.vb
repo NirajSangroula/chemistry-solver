@@ -5,6 +5,17 @@
     Private Atm As Double
     Private MMOFMercury As Double
 
+    Public Function IsSet() As Boolean
+        Try
+            If (IsNothing(PascalValue) = False) Then
+                Return True
+            End If
+            Return False
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
     Public Property PascalValue()
         Get
             If Pascal = Nothing Then
@@ -64,7 +75,7 @@
         SetMMOFMercuryFromPascal()
     End Sub
 
-    Private Sub SetFromPascal()
+    Public Sub SetFromPascal()
         SetAtmFromPascal()
         SetMMOFMercuryFromPascal()
     End Sub
