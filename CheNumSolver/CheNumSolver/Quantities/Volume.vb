@@ -4,66 +4,79 @@
     Private Litre As Double
     Private MeterCubed As Double
     Private CMCubed As Double
+    Private ReadOnly Property InitializedByLitres = 1
+    Private ReadOnly Property InitializedByMeterCubed = 2
+    Private ReadOnly Property InitializedByCMCubed = 3
+    Private ReadOnly Property UnInitialized = 0
+    Private Status As Integer = UnInitialized
     Public Function IsSet() As Boolean
-        Try
-            If (IsNothing(MeterCubedValue) = False) Then
-                Return True
-            End If
-            Return False
-        Catch ex As Exception
-            Return False
-        End Try
+        If (Status = 0) = False Then
+            Return True
+        End If
+        Return False
     End Function
-    Property LitreValue
+    Property LitreValue As Double
         Get
-            If IsNothing(Litre) Then
+            If Litre = 0 Then
                 Initialize()
             End If
             Return Litre
         End Get
-        Set(value)
+        Set(value As Double)
             Litre = value
-            Initialize()
+            Status = InitializedByLitres
         End Set
     End Property
 
-    Property CMCubedValue
+    Property CMCubedValue As Double
         Get
-            If IsNothing(CMCubed) Then
+            If CMCubed = 0 Then
                 Initialize()
             End If
             Return CMCubed
         End Get
-        Set(value)
+        Set(value As Double)
             CMCubed = value
-            Initialize()
+            Status = InitializedByCMCubed
         End Set
     End Property
 
-    Property MeterCubedValue
+    Property MeterCubedValue As Double
         Get
-            If IsNothing(MeterCubed) Then
+            If MeterCubed = 0 Then
                 Initialize()
             End If
             Return MeterCubed
         End Get
-        Set(value)
+        Set(value As Double)
             MeterCubed = value
-            Initialize()
+            Status = InitializedByMeterCubed
         End Set
     End Property
     Private Sub Initialize()
-        If Not IsNothing(Litre) Then
-            SetMeterCubedFromLitre()
-            SetCMCubedFromMeterCubed()
+        If Status = InitializedByLitres Then
+            InitializeFromLitre()
 
-        ElseIf Not IsNothing(CMCubed) Then
-            SetMeterCubedFromCMCubed()
-            SetLitreFromMeterCubed()
+        ElseIf Status = InitializedByCMCubed Then
+            InitializeFromCMCubed()
         Else
-            SetLitreFromMeterCubed()
-            SetCMCubedFromMeterCubed()
+            InitializeFromMeterCubed()
         End If
+    End Sub
+
+    Public Sub InitializeFromMeterCubed()
+        SetLitreFromMeterCubed()
+        SetCMCubedFromMeterCubed()
+    End Sub
+
+    Public Sub InitializeFromCMCubed()
+        SetMeterCubedFromCMCubed()
+        SetLitreFromMeterCubed()
+    End Sub
+
+    Public Sub InitializeFromLitre()
+        SetMeterCubedFromLitre()
+        SetCMCubedFromMeterCubed()
     End Sub
 
     Private Sub SetMeterCubedFromLitre()

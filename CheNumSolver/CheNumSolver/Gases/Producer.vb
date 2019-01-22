@@ -1,6 +1,6 @@
 ﻿Public Class Producer
     Public Sub Produce(InputContainer As FixedPressureContainer, ByRef OutputContainer As FixedPressureContainer)
-        If (OutputContainer.Temperature.IsSet()) Then
+        If (OutputContainer.Temperature.IsInitialized()) Then
             SetFinalVolumeInFixedPressureContainer(InputContainer, OutputContainer)
         ElseIf (OutputContainer.Volume.IsSet) Then
             SetFinalTemperatureInFixedPressureContainer(InputContainer, OutputContainer)
@@ -11,14 +11,14 @@
         If (OC.Pressure.IsSet()) Then
             SetFinalVolumeInFixedTemperatureContainer(IC, OC)
         ElseIf (OC.Volume.IsSet()) Then
-            SetFinalVolumeInFixedTemperatureContainer(IC, OC)
+            SetFinalPressureInFixedTemperatureContainer(IC, OC)
         End If
     End Sub
 
     Public Sub Produce(IC As FixedVolumeContainer, ByRef OC As FixedVolumeContainer)
         If (OC.Pressure.IsSet) Then
             SetFinalTemperatureInFixedVolumeContainer(IC, OC)
-        ElseIf (OC.Temperature.IsSet()) Then
+        ElseIf (OC.Temperature.IsInitialized()) Then
             SetFinalPressureInFixedVolumeContainer(IC, OC)
         End If
     End Sub
@@ -28,7 +28,7 @@
             SetFinalPressureInFixedGasContainer(IC, OC)
         ElseIf (OC.Volume.IsSet) = False Then
             SetFinalVolumeInFixedGasContainer(IC, OC)
-        ElseIf (OC.Temperature.IsSet) = False Then
+        ElseIf (OC.Temperature.IsInitialized) = False Then
             SetFinalTemperatureInFixedGasContainer(IC, OC)
         End If
     End Sub

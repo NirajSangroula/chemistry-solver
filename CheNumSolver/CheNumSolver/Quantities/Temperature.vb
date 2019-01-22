@@ -3,66 +3,90 @@
     Private Kelvin As Double
     Private Celsius As Double
     Private Fahrenheit As Double
+    Private ReadOnly Property UNINITIALIZED As Integer = 0
+    Private ReadOnly Property INITIALIZED_BY_KELVIN As Integer = 1
+    Private ReadOnly Property INITIALIZED_BY_CELSIUS As Integer = 2
+    Private ReadOnly Property INITIALIZED_BY_FAHRENHEIT As Integer = 3
+    Private Status As Integer = UNINITIALIZED
 
-    Public Function IsSet() As Boolean
-        Try
-            If (IsNothing(KelvinValue) = False) Then
-                Return True
-            End If
-            Return False
-        Catch ex As Exception
-            Return False
-        End Try
+    Public Function IsInitializedByKelvin() As Boolean
+        Return Status = INITIALIZED_BY_KELVIN
     End Function
+
+    Public Function IsInitializedByFahrenheit() As Boolean
+        Return Status = INITIALIZED_BY_FAHRENHEIT
+    End Function
+
+    Public Function IsInitializedByCelsius() As Boolean
+        Return Status = INITIALIZED_BY_CELSIUS
+    End Function
+
+    Public Function IsInitialized() As Boolean
+        Return (Status = UNINITIALIZED) = False
+    End Function
+
     Property KelvinValue
         Get
-            If IsNothing(Kelvin) Then
+            If Kelvin = 0 And IsInitialized() Then
                 Initialize()
             End If
             Return Kelvin
         End Get
         Set(value)
             Kelvin = value
-            Initialize()
+            Status = INITIALIZED_BY_KELVIN
         End Set
     End Property
 
     Property CelsiusValue
         Get
-            If IsNothing(Celsius) Then
+            If Celsius = 0 And IsInitialized() Then
                 Initialize()
             End If
             Return Celsius
         End Get
         Set(value)
             Celsius = value
-            Initialize()
+            Status = INITIALIZED_BY_CELSIUS
         End Set
     End Property
 
     Property FahrenheitValue
         Get
-            If IsNothing(Fahrenheit) Then
+            If Fahrenheit = 0 And IsInitialized() Then
                 Initialize()
             End If
             Return Fahrenheit
         End Get
         Set(value)
             Fahrenheit = value
-            Initialize()
+            Status = INITIALIZED_BY_FAHRENHEIT
         End Set
     End Property
 
     Private Sub Initialize()
-        If IsNothing(Celsius) = False Then
-            SetKelvinFromCelsius()
-            SetFahrenheitFromKelvin()
-        ElseIf IsNothing(Fahrenheit) = False Then
-            SetKelvinFromFahrenheit()
-            SetCelsiusFromKelvin()
+        If IsInitializedByCelsius() Then
+            InitializeFromCelsius()
+        ElseIf IsInitializedByFahrenheit Then
+            InitializeFromFahrenheit()
         Else
-
+            InitializeFromKelvin()
         End If
+    End Sub
+
+    Public Sub InitializeFromKelvin()
+        SetCelsiusFromKelvin()
+        SetFahrenheitFromKelvin()
+    End Sub
+
+    Public Sub InitializeFromFahrenheit()
+        SetKelvinFromFahrenheit()
+        SetCelsiusFromKelvin()
+    End Sub
+
+    Public Sub InitializeFromCelsius()
+        SetKelvinFromCelsius()
+        SetFahrenheitFromKelvin()
     End Sub
 
     Private Sub SetKelvinFromCelsius()

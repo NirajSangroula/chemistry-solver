@@ -3,14 +3,16 @@
     Private M As Double
     Private MW As Double
     Private NOM As Double
+    Private NOMo As Double
     Private D As Double
     Private ROD As Double
+    Private ReadOnly AVOGADRO_NUMBER As Double = 6.022140857E+23
+    Private Property IsInitialized As Boolean = False
 
     Property Mass()
         Get
-            SetMass()
-            If IsNothing(M) Then
-                Throw New UnknownValueException()
+            If (M = 0 And Not IsInitialized) Then
+                Initialize()
             End If
             Return M
         End Get
@@ -18,6 +20,23 @@
             M = value
         End Set
     End Property
+
+    Public Sub Initialize()
+        IsInitialized = True
+        If (NOM) Then
+            SetFromNumberOfMoles()
+        ElseIf (Mass And MolecularWeight) Then
+            SetNumberOfMoles()
+        ElseIf (NOMo) Then
+            SetNumberOfMolesFromNumberOfMolecules()
+        End If
+    End Sub
+
+    Private Sub SetFromNumberOfMoles()
+        SetNumberOfMolecules()
+        SetMass()
+        SetMolecularWeight()
+    End Sub
 
     Property Name()
         Get
@@ -34,8 +53,8 @@
     Property MolecularWeight()
         Get
             SetMolecularWeight()
-            If IsNothing(MW) Then
-                Throw New UnknownValueException()
+            If (MW = 0 And Not IsInitialized) Then
+                Initialize()
             End If
             Return MW
         End Get
@@ -46,8 +65,8 @@
 
     Property Density()
         Get
-            If IsNothing(D) Then
-                Throw New UnknownValueException()
+            If (D = 0 And Not IsInitialized) Then
+                Initialize()
             End If
             Return D
         End Get
@@ -58,8 +77,8 @@
 
     Property RateOfDiffusion()
         Get
-            If IsNothing(ROD) Then
-                Throw New UnknownValueException()
+            If (ROD = 0 And Not IsInitialized) Then
+                Initialize()
             End If
             Return ROD
         End Get
@@ -71,9 +90,8 @@
 
     Property NumberOfMoles()
         Get
-            SetNumberOfMoles()
-            If IsNothing(NOM) Then
-                Throw New UnknownValueException()
+            If (NOM = 0 And Not IsInitialized) Then
+                Initialize()
             End If
             Return NOM
         End Get
@@ -82,15 +100,41 @@
         End Set
     End Property
 
-    Public Sub SetNumberOfMoles()
-        NumberOfMoles = Mass / MolecularWeight
+    Property NumberOfMolecules()
+        Get
+            SetNumberOfMolecules()
+            If (NOMo = 0 And Not IsInitialized) Then
+                Initialize()
+            End If
+            Return NOMo
+        End Get
+        Set(value)
+            NOM = value
+        End Set
+    End Property
+
+    Public Sub SetNumberOfMolecules()
+        NOMo = NOM * AVOGADRO_NUMBER
     End Sub
 
+    Public Sub SetNumberOfMoles()
+        If MolecularWeight Then
+            NumberOfMoles = Mass / MolecularWeight
+        End If
+    End Sub
+
+    Public Sub SetNumberOfMolesFromNumberOfMolecules()
+        NOM = NOMo / AVOGADRO_NUMBER
+    End Sub
     Public Sub SetMass()
-        Mass = NumberOfMoles * MolecularWeight
+        If MolecularWeight Then
+            Mass = NumberOfMoles * MolecularWeight
+        End If
     End Sub
 
     Public Sub SetMolecularWeight()
-        MolecularWeight = Mass / NumberOfMoles
+        If NumberOfMoles Then
+            MolecularWeight = Mass / NumberOfMoles
+        End If
     End Sub
 End Class

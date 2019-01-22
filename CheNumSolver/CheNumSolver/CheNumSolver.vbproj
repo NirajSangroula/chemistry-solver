@@ -81,6 +81,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Gases\Container.vb" />
+    <Compile Include="Gases\DiffusedResult.vb" />
+    <Compile Include="Gases\Diffusor.vb" />
     <Compile Include="Gases\SingleGasContainer.vb" />
     <Compile Include="Gases\SingleGasContainers\FixedAmountOfSubstanceContainer.vb" />
     <Compile Include="Gases\SingleGasContainers\FixedPressureContainer.vb" />

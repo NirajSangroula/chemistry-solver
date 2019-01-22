@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v2.1": {
       "UnitTestProject1/1.0.0": {
         "dependencies": {
+          "CheNumSolver": "1.0.0",
           "MSTest.TestAdapter": "1.3.2",
           "MSTest.TestFramework": "1.3.2",
           "Microsoft.NET.Test.Sdk": "15.8.0"
@@ -1012,6 +1013,11 @@
             "fileVersion": "1.0.24212.1"
           }
         }
+      },
+      "CheNumSolver/1.0.0": {
+        "runtime": {
+          "CheNumSolver.exe": {}
+        }
       }
     }
   },
@@ -1510,6 +1516,11 @@
       "sha512": "sha512-gQQaCNO5FYxD37SNQvE+yZUNfCt/Y+FgCnead3hu37RsUiwy2cxqRDWPv+Ee+6DlOeV47xaSYYZ6GQW4EhoEXQ==",
       "path": "system.xml.xpath.xmldocument/4.0.1",
       "hashPath": "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512"
+    },
+    "CheNumSolver/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -1,81 +1,79 @@
 ﻿Public Class Pressure
     Private ReadOnly PASCAL_PER_MM_OF_MERCURY As Decimal = 133.322
     Private ReadOnly PASCAL_PER_ATM As Double = 101325
+    Private IsValueSet As Boolean = False
     Private Pascal As Double
     Private Atm As Double
     Private MMOFMercury As Double
 
     Public Function IsSet() As Boolean
-        Try
-            If (IsNothing(PascalValue) = False) Then
-                Return True
-            End If
-            Return False
-        Catch ex As Exception
-            Return False
-        End Try
+        Return IsValueSet
     End Function
 
     Public Property PascalValue()
         Get
-            If Pascal = Nothing Then
+            If Pascal = 0 And IsSet() Then
                 Initialize()
             End If
             Return Pascal
         End Get
         Set(value)
             Pascal = value
-            Initialize()
+            SetFlagValue()
         End Set
     End Property
 
     Public Property AtmValue()
         Get
-            If Atm = Nothing Then
+            If Atm = 0 And IsSet() Then
                 Initialize()
             End If
             Return Atm
         End Get
         Set(value)
             Atm = value
-            Initialize()
+            SetFlagValue()
         End Set
     End Property
 
+    Private Sub SetFlagValue()
+        IsValueSet = True
+    End Sub
+
     Public Property MMOFMercuryValue()
         Get
-            If MMOFMercury = Nothing Then
+            If MMOFMercury = 0 And IsSet() Then
                 Initialize()
             End If
             Return MMOFMercury
         End Get
         Set(value)
             MMOFMercury = value
-            Initialize()
+            SetFlagValue()
         End Set
     End Property
 
     Private Sub Initialize()
         If Pascal Then
-            SetFromPascal()
+            InitializeFromPascal()
         ElseIf Atm Then
-            SetFromAtm()
+            InitializeFromAtm()
         Else
-            SetFromMMOFMercury()
+            InitializeFromMMOFMercury()
         End If
     End Sub
 
-    Private Sub SetFromMMOFMercury()
+    Public Sub InitializeFromMMOFMercury()
         SetPascalFromMMOFMercury()
         SetAtmFromPascal()
     End Sub
 
-    Private Sub SetFromAtm()
+    Public Sub InitializeFromAtm()
         SetPascalFromAtm()
         SetMMOFMercuryFromPascal()
     End Sub
 
-    Public Sub SetFromPascal()
+    Public Sub InitializeFromPascal()
         SetAtmFromPascal()
         SetMMOFMercuryFromPascal()
     End Sub
@@ -93,7 +91,7 @@
     End Sub
 
     Private Sub SetMMOFMercuryFromPascal()
-        MMOFMercuryValue = Pascal * PASCAL_PER_MM_OF_MERCURY
+        MMOFMercuryValue = Pascal / PASCAL_PER_MM_OF_MERCURY
     End Sub
 
     Private Function MeterOfMercury() As Decimal

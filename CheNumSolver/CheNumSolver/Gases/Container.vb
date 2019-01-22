@@ -4,9 +4,11 @@
     Property Temperature As Temperature
     Protected DT As Double
     Protected M As Double
-    Protected Property Gases() As ArrayList
-    Protected Property MergedContainers() As ArrayList
+    Protected Property Gases As ArrayList
+    Public Property MergedContainers As ArrayList
     Public Sub New()
+        Gases = New ArrayList()
+        MergedContainers = New ArrayList()
         MergedContainers.Add(Me)
     End Sub
     Property DiffusionTime() As Double
@@ -46,7 +48,7 @@
     End Function
 
     Public Function GetTotalNumberOfMoles() As Double
-        Dim N As Integer = 0
+        Dim N As Double = 0
         For Each G As Gas In Gases
             N += G.NumberOfMoles
         Next
@@ -54,14 +56,27 @@
     End Function
 
     Public Sub AddGas(C As FixedAmountOfSubstanceContainer)
+        Dim OC = ProduceFixedAmountOfContainer(C)
+        MergedContainers.Add(C)
+        Pressure.PascalValue += OC.Pressure.PascalValue
+    End Sub
+
+    Public Sub RemoveGas(C As FixedAmountOfSubstanceContainer)
+        MergedContainers.Remove(C)
+        Pressure.PascalValue -= ProduceFixedAmountOfContainer(C).Pressure.PascalValue
+    End Sub
+
+    Public Function ProduceFixedAmountOfContainer(C As FixedAmountOfSubstanceContainer) As FixedAmountOfSubstanceContainer
         Dim P As Producer = New Producer()
         Dim OC As FixedAmountOfSubstanceContainer = New FixedAmountOfSubstanceContainer(New Gas())
         With OC
             .Temperature = Temperature
             .Volume = Volume
+            .Pressure = New Pressure()
         End With
         P.Produce(C, OC)
-        MergedContainers.Add(OC)
-        Pressure.PascalValue += OC.Pressure.PascalValue
-    End Sub
+        Return OC
+    End Function
+
+
 End Class
